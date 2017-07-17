@@ -22,7 +22,7 @@ main()
 
 public OnGameModeInit()
 {
-    SetPlayerMarkerForPlayer( 42, 1, ( GetPlayerColor( 1 ) & 0xFFFFFF00 ) );
+    	SetPlayerMarkerForPlayer( 42, 1, ( GetPlayerColor( 1 ) & 0xFFFFFF00 ) );
 	EnableStuntBonusForAll(0);
 	SetGameModeText("Vault Beta 0.1");
 	ShowPlayerMarkers(0);
@@ -79,8 +79,8 @@ public OnGameModeInit()
 	AddPlayerClass(50,  1959.8248,1343.0542,15.3746,89.7065,0,0,0,0,0,0);
 
 	//Random vehicles (On Street) ///////////////////////////////
-    AddStaticVehicle(522,2032.7450,1343.9429,10.8203,270.0026,157,0);
-    AddStaticVehicle(445,2352.2402,1458.8047,19.6289,89.5951,216,0); //
+    	AddStaticVehicle(522,2032.7450,1343.9429,10.8203,270.0026,157,0);
+    	AddStaticVehicle(445,2352.2402,1458.8047,19.6289,89.5951,216,0); //
 	AddStaticVehicle(401,2352.2639,1480.0701,42.3865,90.5514,255,0); //
 	AddStaticVehicle(405,2351.4604,1451.6737,42.3880,90.2886,200,0); //
 	AddStaticVehicle(421,2191.2083,1800.3148,10.3878,180.2024,208,0);
@@ -89,7 +89,7 @@ public OnGameModeInit()
 	AddStaticVehicle(458,2132.7737,1022.5418,10.8203,89.2837,196,0); //
 	AddStaticVehicle(533,2141.8391,1019.2498,10.8203,272.0029,212,0); //
 	AddStaticVehicle(477,2133.0759,1028.9001,10.8203,90.2862,169,0);
-    AddStaticVehicle(522,2309.1284,1519.1444,16.7879,179.7790,0,0); //
+    	AddStaticVehicle(522,2309.1284,1519.1444,16.7879,179.7790,0,0); //
 	AddStaticVehicle(400,1560.8899,-2247.5479,13.6401,90.1796,123,1); //
 	AddStaticVehicle(404,1542.7490,-2211.8071,13.2879,179.5883,119,50); //
 	AddStaticVehicle(410,1529.7560,-2211.2979,13.2119,179.2532,9,1); //
@@ -104,6 +104,10 @@ public OnGameModeInit()
 	AddStaticVehicle(526,1398.1530,-2364.8206,13.3135,0.6409,9,39); //
 	AddStaticVehicle(529,1385.0345,-2364.5071,13.1791,359.4289,42,42); //
 	
+	//Init of score timer//////////////////
+	print( "Starting scoreboard timer..." );
+    	SetTimer( "uS1", ((60*60) * 1000), true );
+	////////////////////////////////////////
 	return 1;
 	
 }
@@ -350,3 +354,9 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 	return 1;
 }
 
+forward uS1();
+public uS1()
+{
+    for( new i = 0; i < MAX_PLAYERS; i++ )
+        SetPlayerScore( i, GetPlayerScore(i)+1 )
+}
