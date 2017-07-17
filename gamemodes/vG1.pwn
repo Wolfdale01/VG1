@@ -358,5 +358,5 @@ forward uS1();
 public uS1()
 {
     for( new i = 0; i < MAX_PLAYERS; i++ )
-        SetPlayerScore( i, GetPlayerScore(i)+1 )
+        SetPlayerScore( i, GetPlayerScore(i)+1 );
 }
